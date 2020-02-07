@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA8F4_cdzaJDI7by8YBhOh85DfpAKFY_9U'
-    })
+    }),
+    // ShareModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
