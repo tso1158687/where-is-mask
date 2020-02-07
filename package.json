@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "github": "ng build --prod --base-href 'https://tso1158687.github.io/where-is-mask/' && ngh --dir dist//where-is-mask --repo=git@github.com:tso1158687/where-is-mask.git --no-silent"
+    "github": "ng build --prod --base-href https://tso1158687.github.io/where-is-mask/ && ngh --dir dist//where-is-mask --repo=git@github.com:tso1158687/where-is-mask.git --no-silent"
   },
   "private": true,
   "dependencies": {
