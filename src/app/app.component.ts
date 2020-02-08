@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   lng = 121.5139071;
   locationData;
   breakpoint: number;
-  zoomValue = 15;
+  zoomValue = 17;
   isOpen = false;
   constructor(private appService: AppService) { }
   ngOnInit() {
@@ -55,18 +55,24 @@ export class AppComponent implements OnInit {
     // green,yellow,red
     let url = 'http://maps.google.com/mapfiles/ms/icons/';
     const maskValue = data.maskAdult;
-    switch (maskValue) {
-      case 0:
-        url += 'red';
-        break;
-      case maskValue < 40:
-        url += 'yellow';
-        break;
-
-      default:
-        url += 'green';
-        break;
+    if (maskValue === 0) {
+      url += 'red';
+    } else if (maskValue < 40) {
+      url += 'yellow';
+    } else {
+      url += 'green';
     }
     return url += '-dot.png';
+  }
+  getAvailableClass(mask) {
+    let className = '';
+    if (mask === 0) {
+      className = 'unavailable';
+    } else if (mask > 0 && mask < 40) {
+      className = 'little-available'
+    } else {
+      className = 'available'
+    }
+    return className;
   }
 }

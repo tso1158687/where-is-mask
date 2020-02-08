@@ -1,15 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
-*{
-    font-family: 'Noto Sans TC';
-    box-sizing: border-box;
+* {
+  font-family: "Noto Sans TC";
+  box-sizing: border-box;
 }
-body{
-    margin: 0;
-    background-color: #f2f2f2;
+body {
+  margin: 0;
+  background-color: #f2f2f2;
 }
-mat-card{
-    margin-right: 10px;
-    margin-left: 10px;
+mat-card {
+  width: 80%;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.card {
+  color: white;
+}
+
+.available {
+  background-color: #388e3c;
+}
+.little-available {
+  background-color: #ffa000;
+}
+.unavailable {
+  background-color: #e91e63;
 }

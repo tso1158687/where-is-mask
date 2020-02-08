@@ -10,41 +10,47 @@
         <a [href]="getAddress(m.address)" target="_blank">{{m.address}}</a>
       </p>
       <p>
-        成人口罩:  {{m.maskAdult}}
+        成人口罩: {{m.maskAdult}}
       </p>
       <p>
-        兒童口罩:  {{m.maskChild}}
+        兒童口罩: {{m.maskChild}}
       </p>
       <p>
-        聯絡電話:  {{m.phone}}
-        </p>
+        聯絡電話: {{m.phone}}
+      </p>
 
       <div>
-        更新時間:  {{m.updated | date:'yyyy-MM-dd HH:mm'}}
+        更新時間: {{m.updated | date:'yyyy-MM-dd HH:mm'}}
       </div>
     </agm-info-window>
   </ng-container>
 </agm-map>
-<mat-grid-list (window:resize)="onResize($event)" [cols]="breakpoint" rowHeight="2:1">
+<mat-grid-list (window:resize)="onResize($event)" [cols]="breakpoint" rowHeight="300px">
 
   <ng-container *ngFor="let m of locationData">
     <mat-grid-tile>
-      <mat-card class="example-card">
+      <mat-card class="card"  [ngClass]="getAvailableClass(m.maskAdult)">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{m.name}}<i class="material-icons">alarm</i></mat-card-title>
-          <mat-card-subtitle>111</mat-card-subtitle>
+          <mat-card-title>{{m.name}}  <i class="material-icons">face</i></mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            成人口罩: {{m.maskAdult}}
           </p>
+          <p>
+            兒童口罩: {{m.maskChild}}
+          </p>
+          <p>
+            聯絡電話: {{m.phone}}
+          </p>
+
+          <div>
+            更新時間: {{m.updated | date:'yyyy-MM-dd HH:mm'}}
+          </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          地址:
+          <a [href]="getAddress(m.address)" target="_blank">{{m.address}}</a>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
