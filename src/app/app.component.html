@@ -25,35 +25,40 @@
     </agm-info-window>
   </ng-container>
 </agm-map>
-<mat-grid-list (window:resize)="onResize($event)" [cols]="breakpoint" rowHeight="300px">
+<ng-container *ngIf="locationData.length>0">
+  <mat-grid-list (window:resize)="onResize($event)" [cols]="breakpoint" rowHeight="300px">
 
-  <ng-container *ngFor="let m of locationData">
-    <mat-grid-tile>
-      <mat-card class="card"  [ngClass]="getAvailableClass(m.maskAdult)">
-        <mat-card-header>
-          <mat-card-title>{{m.name}}  <i class="material-icons">face</i></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            成人口罩: {{m.maskAdult}}
-          </p>
-          <p>
-            兒童口罩: {{m.maskChild}}
-          </p>
-          <p>
-            聯絡電話: {{m.phone}}
-          </p>
+    <ng-container *ngFor="let m of locationData">
+      <mat-grid-tile>
+        <mat-card class="card" [ngClass]="getAvailableClass(m.maskAdult)">
+          <mat-card-header>
+            <mat-card-title>{{m.name}} <i class="material-icons">face</i></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              成人口罩: {{m.maskAdult}}
+            </p>
+            <p>
+              兒童口罩: {{m.maskChild}}
+            </p>
+            <p>
+              聯絡電話: {{m.phone}}
+            </p>
 
-          <div>
-            更新時間: {{m.updated | date:'yyyy-MM-dd HH:mm'}}
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          地址:
-          <a [href]="getAddress(m.address)" target="_blank">{{m.address}}</a>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+            <div>
+              更新時間: {{m.updated | date:'yyyy-MM-dd HH:mm'}}
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            地址:
+            <a [href]="getAddress(m.address)" target="_blank">{{m.address}}</a>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+</ng-container>
+<ng-container *ngIf="locationData.length===0">
+  <div class="no-data">附近無藥局  <i class="material-icons">sentiment_very_dissatisfied</i></div>
   </ng-container>
-</mat-grid-list>
 <app-footer></app-footer>

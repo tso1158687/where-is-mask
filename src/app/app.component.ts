@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   lng = 121.5139071;
   locationData;
   breakpoint: number;
-  zoomValue = 17;
+  zoomValue = 15;
   isOpen = false;
   constructor(private appService: AppService) { }
   ngOnInit() {

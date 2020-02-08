@@ -6,10 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 import { ShareModule } from './share/share.module';
+import { MapComponent } from './pages/map/map.component';
+import { AboutComponent } from './pages/about/about.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
