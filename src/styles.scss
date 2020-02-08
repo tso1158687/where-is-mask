@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+*{
+    font-family: 'Noto Sans TC';
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: #f2f2f2;
+}
+mat-card{
+    margin-right: 10px;
+    margin-left: 10px;
+}

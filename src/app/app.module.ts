@@ -18,7 +18,7 @@ import { ShareModule } from './share/share.module';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA8F4_cdzaJDI7by8YBhOh85DfpAKFY_9U'
     }),
-    // ShareModule.forRoot()
+    ShareModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

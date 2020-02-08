@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "where-is-mask"
+  "defaultProject": "where-is-mask",
+  "cli": {
+    "analytics": "b31f5f59-0302-4341-83c3-5cbfc929003c"
+  }
 }

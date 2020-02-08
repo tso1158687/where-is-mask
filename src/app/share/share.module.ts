@@ -11,7 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { HeaderComponent, FooterComponent } from './components';
+import { HeaderComponent, FooterComponent } from './components';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
@@ -33,7 +33,7 @@ const angularMaterialModule = [
   MatIconModule
 ];
 
-// const components = [HeaderComponent, FooterComponent];
+const components = [HeaderComponent, FooterComponent];
 
 const directives = [
   // ClickOutSideDirective
@@ -43,9 +43,6 @@ const pipes = [
   // StatusPipe,
 ];
 
-const dynamicComponents = [
-  // AccountModalComponent
-];
 
 const shareProviders = [
   // LoaderService,
@@ -56,19 +53,17 @@ const shareProviders = [
   imports: [...baseModules, ...angularMaterialModule],
   exports: [
     ...baseModules,
-    // ...components,
+    ...components,
     ...directives,
     ...pipes,
-    ...dynamicComponents,
     ...angularMaterialModule
   ],
-  entryComponents: [...dynamicComponents],
   declarations: [
-    // ...components, 
-    ...directives, ...pipes, ...dynamicComponents]
+    ...components, 
+    ...directives, ...pipes]
 })
 export class ShareModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<ShareModule> {
     return {
       ngModule: ShareModule,
       providers: [...shareProviders]
