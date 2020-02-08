@@ -1,30 +1,33 @@
 <app-header></app-header>
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomValue" (boundsChange)="changeLocation($event)">
-  <ng-container *ngFor="let m of locationData; let i = index">
-    <agm-marker [latitude]="m.latitude" [longitude]="m.longitude" (markerClick)="markerClick(infowindow)"
-      [iconUrl]='getIconUrl(m)'>>
-    </agm-marker>
-    <agm-info-window #infowindow [latitude]="m.latitude+0.0005" [longitude]="m.longitude">
-      <h2>{{m.name}}</h2>
-      <p>地址:
-        <a [href]="getAddress(m.address)" target="_blank">{{m.address}}</a>
-      </p>
-      <p>
-        成人口罩: {{m.maskAdult}}
-      </p>
-      <p>
-        兒童口罩: {{m.maskChild}}
-      </p>
-      <p>
-        聯絡電話: {{m.phone}}
-      </p>
+<div class="map-container">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomValue" (boundsChange)="changeLocation($event)">
+    <ng-container *ngFor="let m of locationData; let i = index">
+      <agm-marker [latitude]="m.latitude" [longitude]="m.longitude" (markerClick)="markerClick(infowindow)"
+        [iconUrl]='getIconUrl(m)'>>
+      </agm-marker>
+      <agm-info-window #infowindow [latitude]="m.latitude+0.0005" [longitude]="m.longitude">
+        <h2>{{m.name}}</h2>
+        <p>地址:
+          <a [href]="getAddress(m.address)" target="_blank">{{m.address}}</a>
+        </p>
+        <p>
+          成人口罩: {{m.maskAdult}}
+        </p>
+        <p>
+          兒童口罩: {{m.maskChild}}
+        </p>
+        <p>
+          聯絡電話: {{m.phone}}
+        </p>
+  
+        <div>
+          更新時間: {{m.updated | date:'yyyy-MM-dd HH:mm'}}
+        </div>
+      </agm-info-window>
+    </ng-container>
+  </agm-map>
+</div>
 
-      <div>
-        更新時間: {{m.updated | date:'yyyy-MM-dd HH:mm'}}
-      </div>
-    </agm-info-window>
-  </ng-container>
-</agm-map>
 <ng-container *ngIf="locationData.length>0">
   <mat-grid-list (window:resize)="onResize($event)" [cols]="breakpoint" rowHeight="300px">
 

@@ -9,6 +9,10 @@ body {
   margin: 0;
   background-color: #f2f2f2;
 }
+.map-container{
+    display: block;
+    width: 100%;
+}
 mat-card {
   width: 80%;
   margin-right: 10px;
@@ -16,7 +20,7 @@ mat-card {
 }
 agm-map {
     height: 50vh;
-    // width: 100vw;
+    // width: 80vw;
   }
 .card {
   color: white;
