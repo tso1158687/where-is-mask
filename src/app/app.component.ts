@@ -1,20 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import { AppService } from "./app.service";
-import { debounceTime } from 'rxjs/operators'
+import { Component, OnInit } from '@angular/core';
+import { AppService } from './app.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = "roadmap-drawer";
   lat = 25.0470782;
   lng = 121.5139071;
   locationData;
   breakpoint: number;
-  iconUrl = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-  // green,yellow,red
   zoomValue = 15;
   isOpen = false;
   constructor(private appService: AppService) { }
@@ -29,29 +26,47 @@ export class AppComponent implements OnInit {
     const getCenter = data.getCenter().toJSON();
     const getNE = data.getNorthEast().toJSON();
     const getSW = data.getSouthWest().toJSON();
-    const max = 30;
+    const max = 10;
     this.appService
       .getMaskInformation(getCenter, getNE, getSW, max)
-      .pipe(
-        debounceTime(3000)
-      )
+      // .pipe(
+      //   debounceTime(3000)
+      // )
       .subscribe(e => {
         this.locationData = e;
-        console.log(this.locationData)
+        console.log(this.locationData);
       });
   }
 
   markerClick(e) {
-    console.log("maker click");
+    console.log('maker click');
     e.open();
     this.isOpen = true;
   }
   onResize(event) {
-    console.log("resize");
+    console.log('resize');
     this.breakpoint = event.target.innerWidth <= 768 ? 1 : 3;
   }
   getAddress(address) {
-    let url = `https://www.google.com.tw/maps/place/${address}`;
+    const url = `https://www.google.com.tw/maps/place/${address}`;
     return url;
+  }
+  getIconUrl(data) {
+    // green,yellow,red
+    let url = 'http://maps.google.com/mapfiles/ms/icons/';
+    const maskValue = data.maskAdult;
+    switch (maskValue) {
+      case 0:
+        url += 'red';
+        break;
+      case maskValue < 40:
+        url += 'yellow';
+        break;
+
+      default:
+        url += 'green';
+        break;
+    }
+    return url += '-dot.png';
   }
 }
